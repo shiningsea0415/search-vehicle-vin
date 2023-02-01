@@ -2,7 +2,7 @@
 
 :root {
   --color-bg-primary: #fff;
-  --color-bg-secondary: #fde047;
+  --color-bg-secondary: #f9f9f9;
   --color-bg-default: #fff;
   --color-bg-inverse: #919191;
 
@@ -26,7 +26,7 @@
 /** purgecss start ignore */
 .theme-dark {
   --color-bg-primary: #292929;
-  --color-bg-secondary: #dcd0c0;
+  --color-bg-secondary: #333333;
   --color-bg-default: #f4f4f4;
   --color-bg-inverse: #606060;
 
