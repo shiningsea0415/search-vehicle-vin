@@ -14,7 +14,7 @@ import {
 } from "remix";
 import type { LinksFunction, LoaderFunction } from "remix";
 
-import appStyleUrl from "~/styles/app.css";
+import appStyleUrl from "./styles/app.css";
 
 /**
  * The `links` export is a function that returns an array of objects that map to

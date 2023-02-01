@@ -17,26 +17,14 @@ export let loader: LoaderFunction = () => {
   let data: IndexData = {
     resources: [
       {
-        name: "Remix Docs",
-        url: "https://remix.run/docs"
+        name: "Contact me",
+        url: "https://t.me/Altosey"
       },
-      {
-        name: "React Router Docs",
-        url: "https://reactrouter.com/docs"
-      },
-      {
-        name: "Remix Discord",
-        url: "https://discord.gg/VBePs6d"
-      }
     ],
     topPages: [
-    //   {
-    //     to: "/gallery",
-    //     name: "Browse Components (Coming soon)"
-    //   },
       {
         to: "/auth",
-        name: "See Supabase in action",
+        name: "Sing In",
         isPrimary: true
       },
     ]
@@ -49,8 +37,8 @@ export let loader: LoaderFunction = () => {
 // https://remix.run/api/conventions#meta
 export let meta: MetaFunction = () => {
   return {
-    title: "Remix Starter Kit",
-    description: "Welcome to Remix Starter Kit"
+    title: "Vehicle Search",
+    description: "Welcome to out Vehicle Search Engine"
   };
 };
 
@@ -59,31 +47,21 @@ export default function Index() {
   let data = useLoaderData<IndexData>();
 
   return (
-      <SiteLayout>
-    <div className="min-h-screen flex flex-col justify-center">
-      <main>
-        <StarterKit/>
-        <p className="text-center">Remix and Supabase for server rendered web applications, pretty good setup for eslint, prettier, git hooks, etc. and friction-less and robust UI development with TailwindCSS, DaisyUI and Headless UI</p>
-      </main>
-      <aside className="text-center mt-4">
-        <ul className="flex flex-row justify-center gap-2">
-          {data.topPages.map(page => (
-            <li key={page.to} className="remix__page__resource">
+    <SiteLayout>
+      <div className="min-h-screen flex flex-col justify-center">
+        <main>
+          <StarterKit/>
+        </main>
+        <aside className="text-center mt-4">
+          <ul className="flex flex-row justify-center gap-2">
+            {data.topPages.map(page => (
+              <li key={page.to} className="remix__page__resource">
                 <Link className={`action__auth btn btn-primary ${!page.isPrimary && 'btn-outline'}`} to={page.to} prefetch="intent">{page.name} &rarr;</Link>
-            </li>
-          ))}
-        </ul>
-        <br/>
-        <h2 className="text-purple-400">Remix Resources</h2>
-        <ul className="flex flex-row justify-center gap-2">
-          {data.resources.map(resource => (
-            <li key={resource.url} className="remix__page__resource text-gray-600">
-              <a href={resource.url}>{resource.name}</a>
-            </li>
-          ))}
-        </ul>
-      </aside>
-    </div>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
     </SiteLayout>
   );
 }
