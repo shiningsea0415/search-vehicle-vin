@@ -1,8 +1,8 @@
 import type { MetaFunction, LoaderFunction } from "remix";
 import { useLoaderData, json, Link } from "remix";
 
-import StarterKit from "~/components/StarterKit"
-import SiteLayout from '../components/SiteLayout'
+import StarterKit from "../components/StarterKit"
+import SiteLayout from '../components/layouts/SiteLayout'
 
 type IndexData = {
   resources: Array<{ name: string; url: string }>;
@@ -17,7 +17,7 @@ export let loader: LoaderFunction = () => {
   let data: IndexData = {
     resources: [
       {
-        name: "Contact me",
+        name: "Contact Me",
         url: "https://t.me/Altosey"
       },
     ],
@@ -48,7 +48,7 @@ export default function Index() {
 
   return (
     <SiteLayout>
-      <div className="min-h-screen flex flex-col justify-center">
+      <div className="flex flex-col justify-center">
         <main>
           <StarterKit/>
         </main>

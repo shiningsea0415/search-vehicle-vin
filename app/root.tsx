@@ -147,7 +147,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
           <p>{error.message}</p>
           <hr />
           <p>
-            Hey, developer, you should replace this with what you want your
+            Hey, you should replace this with what you want your
             users to see.
           </p>
         </div>

@@ -2,7 +2,7 @@ import { LoaderFunction, redirect, useLoaderData, Link, useCatch } from "remix"
 import { User } from '@supabase/supabase-js'
 import { supabase } from '~/lib/supabase/supabase.server'
 import { isAuthenticated, getUserByRequestToken } from "~/lib/auth"
-import AppLayout from '~/components/AppLayout'
+import AppLayout from '~/components/layouts/AppLayout'
 
 type ProfileAttrs = {
     username?: string,

@@ -1,7 +1,7 @@
 import type { ActionFunction } from 'remix'
 import type { Session, User } from '@supabase/supabase-js'
 import { useActionData, MetaFunction, redirect, json } from "remix"
-import AuthForm, { AuthCreds } from "../../components/AuthForm"
+import AuthForm, { AuthCreds } from "../../components/forms/AuthForm"
 import { supabaseToken } from "../../cookies"
 import { supabase } from '../../lib/supabase/supabase.server'
 

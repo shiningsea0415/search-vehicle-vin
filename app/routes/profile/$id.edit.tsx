@@ -4,7 +4,7 @@ import { User } from '@supabase/supabase-js'
 import { supabase } from '~/lib/supabase/supabase.server'
 import { isAuthenticated, getUserByRequestToken } from "~/lib/auth"
 import { getSupabaseClient } from '~/lib/supabase/supabase.client'
-import AppLayout from '~/components/AppLayout'
+import AppLayout from '~/components/layouts/AppLayout'
 
 type ProfileAttrs = {
     username?: string,
