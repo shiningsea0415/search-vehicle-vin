@@ -4,7 +4,7 @@ import { User } from '@supabase/supabase-js'
 import { supabase } from '~/lib/supabase/supabase.server'
 import { isAuthenticated, getUserByRequestToken } from "~/lib/auth"
 import { getSupabaseClient } from '~/lib/supabase/supabase.client'
-import AppLayout from '~/components/layouts/AppLayout'
+import SearchLayout from '~/components/layouts/SearchLayout'
 
 type ProfileAttrs = {
     username?: string,
@@ -56,7 +56,7 @@ export let action: ActionFunction = async ({ request }) => {
         return json(errors, { status: 422 });
     }
 
-    return redirect('/profile')
+    return redirect('/search')
 }
 
 export default function ProfileEdit() {
@@ -89,7 +89,7 @@ export default function ProfileEdit() {
     }
 
     return (
-        <AppLayout user={user}>
+        <SearchLayout user={user}>
             <div className="flex flex-col justify-center items-center relative">
                 <div className="py-8 flex flex-col place-items-center">
                     <div>
@@ -135,5 +135,5 @@ export default function ProfileEdit() {
                     </div>
                 </div>
             </div>
-        </AppLayout>)
+        </SearchLayout>)
 }

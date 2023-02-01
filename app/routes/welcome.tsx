@@ -1,6 +1,6 @@
 
 import { MetaFunction } from "remix"
-import SiteLayout from "~/components/layouts/AppLayout";
+import SiteLayout from "~/components/layouts/SiteLayout";
 import StarterKit from "~/components/StarterKit";
 
 // https://remix.run/api/conventions#meta

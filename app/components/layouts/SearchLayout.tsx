@@ -1,16 +1,16 @@
 import { PropsWithChildren, ReactElement, Fragment } from "react";
 import type { User } from '@supabase/supabase-js'
-import AppHeader from './AppHeader'
+import SearchHeader from './SearchHeader'
 
-type AppLayoutProps = {
+type SearchLayoutProps = {
     user?: User
 }
 
-function AppLayout({ user, children }: PropsWithChildren<AppLayoutProps>): ReactElement {
+function SearchLayout({ user, children }: PropsWithChildren<SearchLayoutProps>): ReactElement {
     return (
         <Fragment>
             <div className="header">
-                <AppHeader user={user} />
+                <SearchHeader user={user} />
             </div>
             <div className="container mx-auto">
                 {children}
@@ -19,4 +19,4 @@ function AppLayout({ user, children }: PropsWithChildren<AppLayoutProps>): React
     )
 }
 
-export default AppLayout;
+export default SearchLayout;

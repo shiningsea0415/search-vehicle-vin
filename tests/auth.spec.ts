@@ -21,6 +21,6 @@ test(`should allow login with the right credentials`, async ({ page }) => {
     await page.fill('input[name="password"]', process.env.PW_USER_PASS || '')
     await page.locator('form button[type="submit"]').click()
     await page.waitForLoadState('networkidle')
-    expect(page.url().substr(page.url().lastIndexOf('/'))).toEqual('/profile')
+    expect(page.url().substr(page.url().lastIndexOf('/'))).toEqual('/search')
     await page.context().storageState({ path: 'tests/state.json' });
 });

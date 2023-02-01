@@ -39,7 +39,7 @@ Out of the box you get all the `essentials`
 
 with [Supabase](https://supabase.io/) support
 - __Authentication System__ with Supabase GoTrue
-- __User Profiles__ available on `/profile` as an example for Supabase PostgREST (CRUD API) (*retreival-only for now*)
+- __User Profiles__ available on `/search` as an example for Supabase PostgREST (CRUD API) (*retreival-only for now*)
 - __User Avatar__ with Supbase Storage(AWS S3 backed effortless uploads) available on `/images/[bucket-name]/[image-name]` resource routes. When retrieving you use the SDK server-side, and when uploading you use the client-side SDK loaded from CDN to upload the images to Supabase managed buckets, which are linked to profile on successful uploads.
 
 and a bunch of pre-made, hand-rolled(easily replace-able) components, that you almost always end up installing/using for any non-trivial project
@@ -138,12 +138,12 @@ With all the configs done right, you should get the following screens/views up a
 
 ### Profile (default landing)
 <hr/>
-<img src="./public/app-shots/profile.png" alt="Sign In">
+<img src="./public/app-shots/search.png" alt="Sign In">
 <hr/>
 
 ### Profile Update Screen (with image upload)
 <hr/>
-<img src="./public/app-shots/profile-edit.png" alt="Sign In">
+<img src="./public/app-shots/search-edit.png" alt="Sign In">
 
 
 

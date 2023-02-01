@@ -1,8 +1,10 @@
 import { ReactElement } from "react";
-import { Link } from "remix"
+import { Link, useTransition } from "remix"
 import ThemeSwitcher from "../buttons/ThemeSwitcher";
 
 function HeaderContent(): ReactElement {
+    const transition = useTransition();
+
     return (
         <div className="container remix-app__header-content m-auto flex flex-row justify-between items-center py-5 text-primary">
           <Link to="/" title="NCS" className="remix-app__header-home-link">
