@@ -32,10 +32,6 @@ module.exports = {
           default: 'var(--color-bg-default)',
           inverse: 'var(--color-bg-inverse)',
         },
-        fontFamily: {
-          display: 'var(--font-display)',
-          body: 'var(--font-body)',
-        },
         fontWeights: {
           normal: 'var(--font-weight-normal)',
           display: 'var(--font-weight-display)',

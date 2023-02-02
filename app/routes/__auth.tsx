@@ -1,4 +1,4 @@
-import { Outlet, Link } from "remix"
+import { Outlet } from "remix"
 import SiteLayout from "../components/layouts/SiteLayout";
 import StarterKit from "../components/StarterKit";
 

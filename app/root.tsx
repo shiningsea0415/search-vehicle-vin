@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
@@ -66,7 +65,7 @@ function Document({
   title?: string;
 }) {
     let data = useLoaderData();
-    const matches = useMatches();
+    // const matches = useMatches();
     // const useWhenSomethingIsTrue = matches.some(match => match.handle && match.handle?.something)
   return (
     <html lang="en">

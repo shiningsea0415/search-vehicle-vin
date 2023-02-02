@@ -1,9 +1,8 @@
+import React from "react"
 import { LoaderFunction, redirect, useLoaderData, Link, useCatch, MetaFunction, ActionFunction, Form, useActionData, json } from "remix"
 import { User } from '@supabase/supabase-js'
-import { supabase } from '~/lib/supabase/supabase.server'
 import { isAuthenticated, getUserByRequestToken } from "~/lib/auth"
 import SearchLayout from '~/components/layouts/SearchLayout'
-import React from "react"
 
 export type VINCreds = {
     vin?: string,

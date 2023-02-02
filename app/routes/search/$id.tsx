@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { LoaderFunction, MetaFunction, redirect, useLoaderData } from "remix"
 import { User } from '@supabase/supabase-js'
 import { isAuthenticated, getUserByRequestToken } from "~/lib/auth"
@@ -67,7 +66,7 @@ export default function SearchResult() {
                         <div className="text-purple-600 pb-2 text-2xl border-b my-2 uppercase text-center">Vehicle Picture</div>
                         <div className="mt-2 text-center grid grid-cols-1 xs:grid-cols-3 gap-3">
                             {images.map((image, index) =>(
-                                <div className="flex flex-col items-center space-x-6">
+                                <div className="flex flex-col items-center space-x-6" key={index}>
                                     <div className="shrink-0">
                                         <img className="w-36 h-36 object-cover rounded-[10px] shadow-lg" src={image} alt={'Vehicle'} />
                                     </div>
