@@ -1,15 +1,10 @@
-<div align="center"><strong>Vehicle Search by VIN(Remix + Supabase + Typescript)</strong></div>
+<div align="center"><strong><h1>Vehicle Search by VIN</h1>(Remix + Supabase + Typescript)</strong></div>
 
-Out of the box you get all the `essentials`
+You get all the `essentials`
 - __Typescript__ as the language choice
 - __Tailwind CSS__ for quick styling without getting out of your HTML
-- __Daisy UI__ for pre-made TailwindCSS component classes
-- __Headless UI + React Hot Toast__ for robust headless logic you can use for components like Dialog/Modal, Dropdown, List, etc.
-- __WorkSans__ as the App font
-- __Icons through React-icons__ for on-demand, tree-shakeable icons
 - __ESLint__ for static code analysis
 - __Prettier__ for code formatting (even for your TailwindCSS classes - sorted as per Tailwindlab reccomendations)
-- __Playwright__ for reliable end-to-end test cases (+ end-to-end test cases for the homepage and the sign-in page)
 
 with [Supabase](https://supabase.io/) support
 - __Authentication System__ with Supabase GoTrue
@@ -17,10 +12,6 @@ with [Supabase](https://supabase.io/) support
 and a bunch of pre-made, hand-rolled(easily replace-able) components, that you almost always end up installing/using for any non-trivial project
 
 ## Quick Start
-
-The best way to start with this template is to click "Use this template" above, create your own copy and work with it
-
-### Development
 
 To start the project locally, run:
 ```bash
