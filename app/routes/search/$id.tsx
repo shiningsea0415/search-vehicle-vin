@@ -59,7 +59,7 @@ export let action: ActionFunction = async ({ request }) => {
     return redirect('/search')
 }
 
-export default function ProfileEdit() {
+export default function SearchResult() {
     const transition = useTransition()
     const { profile, user } = useLoaderData<{ profile:ProfileAttrs, user?: User }>()
     const errors = useActionData<ProfileAttrs>()
