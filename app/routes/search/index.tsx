@@ -15,7 +15,6 @@ export let loader: LoaderFunction = async ({ request }) => {
     return { user }
 }
 
-// https://remix.run/api/conventions#meta
 export let meta: MetaFunction = () => {
     return {
       title: "Vehicle Search",
@@ -63,23 +62,6 @@ export default function Search() {
                     </div>
                 </div>
             </div>
-            {/* <div className="py-8 flex flex-col place-items-center">
-                <div>
-                    {profile?.avatar_url && <div className="mt-2 text-center">
-                        <div className="flex flex-col gap-3 items-center space-x-6">
-                            <div className="shrink-0">
-                                <img className="w-36 h-36 object-cover rounded-full shadow-lg" src={`/images/avatars/${profile.avatar_url}`} alt={profile?.username} />
-                            </div>
-                        </div>
-                    </div> }
-                    <div className="profile-detail my-4 flex flex-col place-items-center">
-                        <h2 className="text-4xl mb-1">Howdie, { profile?.username || user?.email }!</h2>
-                        { profile?.website && <span className="inline-block px-2 py-1 bg-gray-400 text-white rounded-full">{ profile?.website }</span>}
-                        <br/>
-                        <Link className="px-4 py-1 rounded-md text-white bg-indigo-500 shadow-lg shadow-indigo-500/50" to={`/search/${user?.id}/edit`}>Update Profile Details</Link>
-                    </div>
-                </div>
-            </div> */}
         </SearchLayout>
     )
 }

@@ -3,14 +3,15 @@ import type { User } from '@supabase/supabase-js'
 import SearchHeader from './SearchHeader'
 
 type SearchLayoutProps = {
-    user?: User
+    user?: User,
+    vin?: string
 }
 
-function SearchLayout({ user, children }: PropsWithChildren<SearchLayoutProps>): ReactElement {
+function SearchLayout({ user, vin, children }: PropsWithChildren<SearchLayoutProps>): ReactElement {
     return (
         <Fragment>
             <div className="header">
-                <SearchHeader user={user} />
+                <SearchHeader user={user} vin={vin} />
             </div>
             <div className="container mx-auto">
                 {children}

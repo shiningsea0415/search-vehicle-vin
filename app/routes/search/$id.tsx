@@ -3,10 +3,10 @@ import { LoaderFunction, MetaFunction, redirect, useLoaderData } from "remix"
 import { User } from '@supabase/supabase-js'
 import { isAuthenticated, getUserByRequestToken } from "~/lib/auth"
 import SearchLayout from '~/components/layouts/SearchLayout'
+import google from 'googlethis';
 
 const VEHICLE_API = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/'
 
-// https://remix.run/api/conventions#meta
 export let meta: MetaFunction = () => {
     return {
       title: "Vehicle Detail",
@@ -16,8 +16,10 @@ export let meta: MetaFunction = () => {
 
 export let loader: LoaderFunction = async ({ request, params }) => {
     if (!(await isAuthenticated(request))) return redirect('/auth')
-    let vehicle = {};
+    let vehicle: any = {};
     let errors = {};
+    let images: string[] = [];
+    let vin = params.id;
     const { user } = await getUserByRequestToken(request);
     try {
         const responsePromise = (await fetch(`${VEHICLE_API + params.id}?format=json`)).json();
@@ -27,16 +29,34 @@ export let loader: LoaderFunction = async ({ request, params }) => {
         // @ts-ignore
         errors = [ error.message ]
     }
-    return { user, vehicle, errors, params }
+
+    try {
+        let options = {
+            safe: false,
+            additional_params: {
+                as_oq: `${vehicle?.BodyClass} ${vehicle?.Make} ${vehicle?.Model} ${vehicle?.Manufacturer}`,
+                num: 10,
+                as_qdr: 'm24',
+                as_sitesearch: 'www.cars.com'
+            }
+        }
+        const results = await google.image(`${vehicle?.BodyClass} ${vehicle?.Make} ${vehicle?.Model} ${vehicle?.Manufacturer}` as string, options);
+        images = results.filter((image, index) => index < 3).map((image, index) => image.url);
+    } catch(error) {
+        // @ts-ignore
+        errors = [ error.message ]
+    }
+
+    return { user, vehicle, errors, images, vin }
 }
 
 export default function SearchResult() {
-    const { user, vehicle, errors } = useLoaderData<{ user?: User, vehicle?: any, errors: any }>();
+    const { user, vehicle, errors, images, vin } = useLoaderData<{ user?: User, vehicle?: any, errors: any, images: any[], vin: string }>();
 
     return (
-        <SearchLayout user={user}>
+        <SearchLayout user={user} vin={vin}>
             <div className="flex flex-col justify-center items-center relative">
-                <div className="py-8 flex flex-col place-items-center">
+                <div className="py-8 px-4 flex flex-col place-items-center">
                     <div>
                         <div className='w-full font-normal border py-2 px-4 text-gray-700 hover:bg-gray-50 focus:border-indigo-500 rounded-md focus:outline-none'>
                             {vehicle?.ErrorText.split(';').map((error: string, index: number) => (
@@ -45,16 +65,16 @@ export default function SearchResult() {
                         </div>
 
                         <div className="text-purple-600 pb-2 text-2xl border-b my-2 uppercase text-center">Vehicle Picture</div>
-                        <div className="mt-2 text-center">
-                            <div className="flex flex-col gap-3 items-center space-x-6">
-                                <div className="shrink-0">
-                                    {/* <img className="w-36 h-36 object-cover rounded-full shadow-lg" src={`/images/avatars/${avatarUrl}`} alt={profile?.username} /> */}
+                        <div className="mt-2 text-center grid grid-cols-1 xs:grid-cols-3 gap-3">
+                            {images.map((image, index) =>(
+                                <div className="flex flex-col items-center space-x-6">
+                                    <div className="shrink-0">
+                                        <img className="w-36 h-36 object-cover rounded-[10px] shadow-lg" src={image} alt={'Vehicle'} />
+                                    </div>
                                 </div>
-                            </div>
-                            {/* <small className="h-4 inline-block text-gray-500">{avatarLoading ? `updating...`: `choose an image file to update your profile pic`}</small> */}
+                            ))}
                         </div>
                         <br/>
-                        {/* <div className="text-purple-600 pb-2 text-2xl border-b mb-2 uppercase text-center">Vehicle Details</div> */}
                         <fieldset>
                             <legend className="text-purple-600 pb-2 text-2xl border-b mb-2 uppercase">Vehicle Details</legend>
                             <div className="w-full mb-6">
