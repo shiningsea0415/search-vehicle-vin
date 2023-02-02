@@ -5,8 +5,6 @@ import { isAuthenticated, getUserByRequestToken } from "~/lib/auth"
 import SearchLayout from '~/components/layouts/SearchLayout'
 import React from "react"
 
-const VEHICLE_API = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/'
-
 export type VINCreds = {
     vin?: string,
 }
@@ -30,7 +28,6 @@ export let action: ActionFunction = async ({ request }) => {
     const form = await request.formData();
     const VIN = form.get('VIN');
 
-    let vehicle;
     let errors: VINCreds & { service?: Array<string>} = {}
 
     if (typeof VIN !== 'string') {
@@ -41,20 +38,11 @@ export let action: ActionFunction = async ({ request }) => {
         errors.vin = 'fill-in a valid VIN code!'
     }
 
-    try {
-        const responsePromise = (await fetch(`${VEHICLE_API + VIN}?format=json`)).json();
-        const data = await responsePromise.then(data => data.Results[0]);
-        vehicle = data;
-    } catch(error) {
-        // @ts-ignore
-        errors.service = [ error.message ]
-    }
-
     if (Object.keys(errors).length) {
         return json(errors, { status: 422 });
     }
 
-    return redirect(`/search/${VIN}`, vehicle.Results);
+    return redirect(`/search/${VIN}`);
 }
 
 export default function Search() {
@@ -72,14 +60,6 @@ export default function Search() {
                             {/* <button type="submit" className="">Search</button> */}
                         </Form>
                         {errors && <div className="h-3 text-xs">{errors?.vin && errors.vin}</div>}
-                        {/* <input id="VIN" className="w-full font-normal border py-2 px-4 text-gray-700 hover:bg-gray-50 focus:border-inverse rounded-md focus:outline-none" name="VIN" type="VIN" required placeholder="VIN" onChange={(e) => setVIN(e.target.value)} onKeyPress={(e) => searchVehicle(e.charCode)} /> */}
-                        {/* {vehicleDetail?.ErrorCode && (
-                            <ul className="text-left mt-3">
-                                {vehicleDetail.ErrorText.split(";").map((s: string, i: number) => (
-                                    <li key={i} className="text-[14px] leading-[14px]">{s}</li>
-                                ))}
-                            </ul>
-                        )} */}
                     </div>
                 </div>
             </div>
