@@ -30,5 +30,3 @@ Once done, or if you already have a Supabase project
 - Copy the generated project's API authentication details from `https://app.supabase.io/project/<your-awesome-remix-project>/api?page=auth`
 - Place the details in `.env` as `SUPABASE_URL` and `SUPABASE_KEY`
 - Install NPM dependencies, by running `npm install` or `npm i`
-
-Vehicle Search supports user profiles and user avatars. To get the profile table and storage ready, execute the following queries at `https://app.supabase.io/project/<your-awesome-remix-project>/editor/sql`
